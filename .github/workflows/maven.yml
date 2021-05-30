@@ -27,5 +27,8 @@ jobs:
          restore-keys: |
               ${{ runner.os }}-maven-
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        env:
+          EMBOLD_URL: https://oss.emboldci.dev
+          EMBOLD_TOKEN: ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}
+        run: mvn -B package io.embold.scan:embold-maven-plugin:embold -Dembold.host.url=https://oss.emboldci.dev -Dembold.user.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }} --file pom.xml
 
