@@ -34,7 +34,10 @@ jobs:
           mvn -B package io.embold.scan:embold-maven-plugin:embold -Dembold.host.url=https://oss.emboldci.dev -Dembold.user.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }} --file pom.xml
           response=$(curl --silent --location --request GET "https://oss.emboldci.dev/api/v1/repositories/2dd6b50efbd23318bd3505d5029e1318/qualitygateprofiles/status" --header "Authorization:Bearer ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}")
           if [ "$response" != 'passed' ]; then
-            echo "Quality gate failed"
+            RED='\033[0;31m'
+            GREEN='\033[0;32m'
+            NC='\033[0m' # No Color
+            echo "Embold Quality gate ${RED}FAILED{NC}"
             exit 1
           fi
-          echo "Quality gate passed"
+          echo "Embold Quality gate ${GREEN}PASSED{NC}"
