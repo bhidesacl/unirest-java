@@ -301,6 +301,7 @@
                         <version>3.1.0</version>
                     </dependency>
                 </dependencies>
+                <!--
                 <executions>
                     <execution>
                         <id>vulnerability-checks</id>
@@ -326,7 +327,6 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <!--at least maven 3.2-->
                                     <version>[3.2,)</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
@@ -336,6 +336,7 @@
                         </configuration>
                     </execution>
                 </executions>
+                -->
             </plugin>
         </plugins>
 
