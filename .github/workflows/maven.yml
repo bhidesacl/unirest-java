@@ -37,7 +37,7 @@ jobs:
             RED='\033[0;31m'
             GREEN='\033[0;32m'
             NC='\033[0m' # No Color
-            printf "Embold Quality gate ${RED}FAILED{NC}"
+            printf "Embold Quality gate ${RED}FAILED${NC}"
             exit 1
           fi
-          printf "Embold Quality gate ${GREEN}PASSED{NC}"
+          printf "Embold Quality gate ${GREEN}PASSED${NC}"
