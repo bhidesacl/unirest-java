@@ -31,6 +31,7 @@ jobs:
           tar -xf corona.tar.gz
           ls corona
           mkdir temp
+          echo ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}
           echo -e "embold.url=https://oss.emboldci.dev \nembold.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }} >| ./corona/coronacli/config/cli.properties
           export CORONA_HOME=./corona
           export CORONA_LOG=./corona/logs
