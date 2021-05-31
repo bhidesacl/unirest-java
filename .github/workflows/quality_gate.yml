@@ -18,7 +18,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Set up JDK 1.8
+      - name: Set up JDK 1.8corona.tar.gz
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
@@ -27,5 +27,7 @@ jobs:
       - name: Run with Embold CLI
         run: |
           echo "Run with Embold CLI"
-          response=$(curl --silent --location --request GET "https://oss.emboldci.dev/api/v1/packagedownload/corona?os=linux&checksum=null" --header "Authorization:Bearer ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}")
+          response=$(curl --silent --location --request GET "https://oss.emboldci.dev/api/v1/packagedownload/corona?os=linux&checksum=null" --header "Authorization:Bearer ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }} -o corona.tar.gz")
+          tar -xvf corona.tar.gz
+          ls corona
         
