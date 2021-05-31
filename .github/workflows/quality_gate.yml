@@ -27,5 +27,4 @@ jobs:
       - name: Run with Embold CLI
         run: |
           echo "Run with Embold CLI"
-          echo $CORONA_HOME
-          ls /home/runner/.m2/repository/io/embold/scan/embold-maven-plugin
+          curl --silent --location --request GET "https://oss.emboldci.dev/api/v1/packagedownload/corona?os=linux&checksum=null" --header "Authorization:Bearer ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}"
