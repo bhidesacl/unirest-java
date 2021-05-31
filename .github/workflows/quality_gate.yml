@@ -33,7 +33,7 @@ jobs:
           mkdir temp
           echo ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}
           cat ./corona/coronacli/config/cli.properties
-          echo -e "embold.url=https://oss.emboldci.dev \nembold.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }} >| ./corona/coronacli/config/cli.properties
+          echo -e "embold.url=https://oss.emboldci.dev \nembold.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}" >| ./corona/coronacli/config/cli.properties
           echo -------------------------
           cat ./corona/coronacli/config/cli.properties
           # export CORONA_HOME=./corona
