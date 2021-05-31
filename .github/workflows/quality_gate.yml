@@ -6,10 +6,7 @@ on:
   push:
     branches:
       - emboldcli_test
-    # Sequence of patterns matched against refs/heads
-    branches-ignore:    
-      - apache5
-      - jv11
+
   pull_request:
 
 jobs:
