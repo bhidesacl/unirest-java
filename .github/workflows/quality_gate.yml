@@ -30,4 +30,8 @@ jobs:
           curl --silent --location --request GET "https://oss.emboldci.dev/api/v1/packagedownload/corona?os=linux&checksum=null" --header "Authorization:Bearer ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}" -o corona.tar.gz
           tar -xf corona.tar.gz
           ls corona
+          mkdir temp
+          ./corona/coronacli/bin/coronacli -b "." -c "." -r "git" -p "./corona/coronacli/config/plugins_empty.xml" -d "./temp" -g
+          
+          
         
