@@ -32,10 +32,11 @@ jobs:
           ls corona
           mkdir temp
           echo ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}
-          echo -e "embold.url=https://oss.emboldci.dev \nembold.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }} >| ./corona/coronacli/config/cli.properties
-          export CORONA_HOME=./corona
-          export CORONA_LOG=./corona/logs
-          ./corona/coronacli/bin/coronacli -b "." -c "." -r "git" -p "./corona/coronacli/config/plugins_empty.xml" -d "./temp" -g
+          cat ./corona/coronacli/config/cli.properties
+          # echo -e "embold.url=https://oss.emboldci.dev \nembold.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }} >| ./corona/coronacli/config/cli.properties
+          # export CORONA_HOME=./corona
+          # export CORONA_LOG=./corona/logs
+          #./corona/coronacli/bin/coronacli -b "." -c "." -r "git" -p "./corona/coronacli/config/plugins_empty.xml" -d "./temp" -g
           
           
         
