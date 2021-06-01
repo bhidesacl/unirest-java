@@ -38,7 +38,7 @@ jobs:
           echo -e "embold.url=https://oss.emboldci.dev \nembold.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}" >| ./opt/gamma/corona/coronacli/config/cli.properties
           echo -------------------------
           cat ./opt/gamma/corona/coronacli/config/cli.properties
-          git log --pretty="" -1 --name-status >> ./log.txt
+          git log emboldcli_test --pretty="" -1 --name-status >> ./log.txt
           export CORONA_HOME=./opt/gamma/corona
           export CORONA_LOG=./opt/gamma/corona/logs
           #./opt/gamma/corona/coronacli/bin/coronacli -b "/home/runner/work/unirest-java/unirest-java" -c "/home/runner/work/unirest-java/unirest-java" -r "git" -p "./opt/gamma/corona/coronacli/config/plugins_empty.xml" -d "./temp" -g -gl ./log.txt -ds
