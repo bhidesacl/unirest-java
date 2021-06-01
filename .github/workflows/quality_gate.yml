@@ -37,7 +37,6 @@ jobs:
           cat ./opt/gamma/corona/coronacli/config/cli.properties
           echo -e "embold.url=https://oss.emboldci.dev \nembold.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}" >| ./opt/gamma/corona/coronacli/config/cli.properties
           echo -------------------------
-          rm ./log.txt
           cat ./opt/gamma/corona/coronacli/config/cli.properties
           git log --pretty="" -1 --name-status >> ./log.txt
           export CORONA_HOME=./opt/gamma/corona
