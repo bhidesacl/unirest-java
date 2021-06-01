@@ -167,6 +167,7 @@ public class Config {
      */
     @Deprecated
     public Config asyncClient(HttpAsyncClient value) {
+        System.out.println("testing gatedcommit");
         this.asyncClient = Optional.of(new ApacheAsyncClient(value, this, null, null));
         return this;
     }
