@@ -35,7 +35,7 @@ jobs:
           git log -1 --pretty="" --name-status >> ./log.txt
           export CORONA_HOME=./opt/gamma/corona
           export CORONA_LOG=./opt/gamma/corona/logs
-          ./opt/gamma/corona/coronacli/bin/coronacli -b "/home/runner/work/unirest-java/unirest-java" -c "/home/runner/work/unirest-java/unirest-java" -r "git" -p "./opt/gamma/corona/coronacli/config/plugins_empty.xml" -d "./temp" -g -gl ./log.txt -ds
+          ./opt/gamma/corona/coronacli/bin/coronacli -b "/home/runner/work/unirest-java/unirest-java" -c "/home/runner/work/unirest-java/unirest-java" -r "git" -p "./opt/gamma/corona/coronacli/config/plugins_empty.xml" -d "/home/runner/work/unirest-java/unirest-java/temp" -g -gl ./log.txt -ds
           rm ./log.txt
           cat ./temp/GatedCommit/quality_gate_output.txt
           quality_gate_output_file=./temp/GatedCommit/quality_gate_output.txt
