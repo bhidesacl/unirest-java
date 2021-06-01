@@ -27,23 +27,26 @@ jobs:
       - name: Run with Embold CLI
         run: |
           echo "Run with Embold CLI"
-          # curl --silent --location --request GET "http://192.168.2.38:3001/api/v1/packagedownload/corona?os=linux&checksum=null" --header "Authorization:Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYxODkzMzM5NjgxNCwiaWF0IjoxNjE4OTMzMzk2fQ.Vc1Gp4dlOSvyzc8UwcsGoaN88PE-cGFe39n2Qedmh-NokIW9F_31ZvRAli115MYz8rXEiJ6ay53AvV78yZq5cQ" -o corona.tar.gz
           response=$(curl --silent --location --request GET "https://oss.emboldci.dev/api/v1/packagedownload/corona?os=linux&checksum=null" --header "Authorization:Bearer ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}" -o corona.tar.gz)
           tar -xf corona.tar.gz
-          ls ./opt/gamma/corona/
-          pwd
           mkdir temp
-          #echo ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}
-          cat ./opt/gamma/corona/coronacli/config/cli.properties
           echo -e "embold.url=https://oss.emboldci.dev \nembold.token=${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}" >| ./opt/gamma/corona/coronacli/config/cli.properties
           echo -------------------------
-          cat ./opt/gamma/corona/coronacli/config/cli.properties
           git log -1 --pretty="" --name-status
           export CORONA_HOME=./opt/gamma/corona
           export CORONA_LOG=./opt/gamma/corona/logs
-          #./opt/gamma/corona/coronacli/bin/coronacli -b "/home/runner/work/unirest-java/unirest-java" -c "/home/runner/work/unirest-java/unirest-java" -r "git" -p "./opt/gamma/corona/coronacli/config/plugins_empty.xml" -d "./temp" -g -gl ./log.txt -ds
-          cat ./log.txt
+          ./opt/gamma/corona/coronacli/bin/coronacli -b "/home/runner/work/unirest-java/unirest-java" -c "/home/runner/work/unirest-java/unirest-java" -r "git" -p "./opt/gamma/corona/coronacli/config/plugins_empty.xml" -d "./temp" -g -gl ./log.txt -ds
           rm ./log.txt
-          ls ./temp/GatedCommit
+          cat ./temp/GatedCommit/quality_gate_output.txt
+          quality_gate_output_file=./temp/GatedCommit/quality_gate_output.txt
+          var=`cat $quality_gate_output_file | grep Status`
+          statusline=`echo "$var" | cut -d$'\n' -f1`
+          status=`echo "$statusline" | cut -c 8-`
+          if [[ "$status" == "fail" ]]
+          then
+            exit -1
+          fi
+          
+          
           
         
