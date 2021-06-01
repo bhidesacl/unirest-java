@@ -153,6 +153,7 @@ public class Config {
      */
     public Config httpClient(Function<Config, Client> httpClient) {
         System.out.println("testing gatedcommit");
+        System.out.println("testing gatedcommit");
         clientBuilder = httpClient;
         return this;
     }
