@@ -42,6 +42,6 @@ jobs:
           export CORONA_LOG=./opt/gamma/corona/logs
           ./opt/gamma/corona/coronacli/bin/coronacli -b "/home/runner/work/unirest-java/unirest-java" -c "/home/runner/work/unirest-java/unirest-java" -r "git" -p "./opt/gamma/corona/coronacli/config/plugins_empty.xml" -d "./temp" -g
           cat ./temp/GatedCommit/log.txt
-          pwd
+          ls ./temp/GatedCommit
           
         
