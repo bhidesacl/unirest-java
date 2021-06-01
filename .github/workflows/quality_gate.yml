@@ -31,6 +31,7 @@ jobs:
           response=$(curl --silent --location --request GET "https://oss.emboldci.dev/api/v1/packagedownload/corona?os=linux&checksum=null" --header "Authorization:Bearer ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}" -o corona.tar.gz)
           tar -xf corona.tar.gz
           ls ./opt/gamma/corona/
+          pwd
           mkdir temp
           #echo ${{ secrets.EMBOLD_OSS_SCAN_TOKEN }}
           cat ./opt/gamma/corona/coronacli/config/cli.properties
@@ -39,7 +40,7 @@ jobs:
           cat ./opt/gamma/corona/coronacli/config/cli.properties
           export CORONA_HOME=./opt/gamma/corona
           export CORONA_LOG=./opt/gamma/corona/logs
-          ./opt/gamma/corona/coronacli/bin/coronacli -b "./unirest" -c "./unirest" -r "git" -p "./opt/gamma/corona/coronacli/config/plugins_empty.xml" -d "./temp" -g
+          ./opt/gamma/corona/coronacli/bin/coronacli -b "./" -c "./" -r "git" -p "./opt/gamma/corona/coronacli/config/plugins_empty.xml" -d "./temp" -g
           
           
         
